@@ -85,24 +85,22 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * A placeholder fragment containing a simple view.
+     * Fragment qui affiche une liste d'événements passés (section 0) ou à venir (section 1)
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class EventListFragment extends Fragment {
         /**
-         * The fragment argument representing the section number for this
-         * fragment.
+         * L'argument du fragment qui représente le numéro de la section.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
+        public EventListFragment() {
         }
 
         /**
-         * Returns a new instance of this fragment for the given section
-         * number.
+         * Retourne une nouvelle instance du fragment pour une section donnée
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static EventListFragment newInstance(int sectionNumber) {
+            EventListFragment fragment = new EventListFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -112,7 +110,10 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            // Récupère le layout de la liste d'événements
+            // TODO Renommer fragment_home
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+            // Met un petit texte pour bien montrer que le Fragment a récupéré son numéro de section
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -133,7 +134,7 @@ public class HomeActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return EventListFragment.newInstance(position + 1);
         }
 
         @Override
