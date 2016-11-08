@@ -17,7 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -112,8 +115,18 @@ public class HomeActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             // Récupère le layout de la liste d'événements
             // TODO Renommer fragment_home
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            // Met un petit texte pour bien montrer que le Fragment a récupéré son numéro de section
+            View rootView = inflater.inflate(R.layout.event_list_home_screen, container, false);
+            GridView gridview = (GridView) rootView.findViewById(R.id.gridview);
+            gridview.setAdapter(new ActivityAdapter(getContext()));
+
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View v,
+                                        int position, long id) {
+                    Toast.makeText(getContext(), "" + position,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            /*// Met un petit texte pour bien montrer que le Fragment a récupéré son numéro de section
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             // Selon la section dans laquelle on est, on affiche un contenu différent
             switch(getArguments().getInt(ARG_SECTION_NUMBER)){
@@ -125,7 +138,7 @@ public class HomeActivity extends AppCompatActivity {
                     textView.setText(getString(R.string.section_format,
                             getString(R.string.coming_events_tab)));
                     break;
-            }
+            }*/
 
             return rootView;
         }
