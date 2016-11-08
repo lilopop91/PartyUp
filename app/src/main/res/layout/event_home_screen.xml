@@ -18,7 +18,7 @@
 
             <ImageView
                 app:srcCompat="@drawable/thumbnail_6"
-                android:id="@+id/eventPicture"
+                android:id="@+id/eventThumbPicture"
                 android:layout_weight="1"
                 android:adjustViewBounds="false"
                 android:scaleType="centerCrop"
@@ -32,7 +32,7 @@
                 android:id="@+id/eventNameTextView"
                 android:textSize="25sp"
                 android:layout_weight="1"
-                android:layout_alignBottom="@+id/eventPicture"
+                android:layout_alignBottom="@+id/eventThumbPicture"
                 android:textColor="@android:color/background_light" />
         </RelativeLayout>
 

@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,15 +54,6 @@ public class HomeActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
@@ -114,12 +107,11 @@ public class HomeActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Récupère le layout de la liste d'événements
-            // TODO Renommer fragment_home
-            View rootView = inflater.inflate(R.layout.event_list_home_screen, container, false);
-            GridView gridview = (GridView) rootView.findViewById(R.id.gridview);
-            gridview.setAdapter(new ActivityAdapter(getContext()));
+            LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.event_list_home_screen, container, false);
+            GridView listView = (GridView) rootView.findViewById(R.id.gridView);
+            listView.setAdapter(new ActivityAdapter(getContext()));
 
-            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v,
                                         int position, long id) {
                     Toast.makeText(getContext(), "" + position,

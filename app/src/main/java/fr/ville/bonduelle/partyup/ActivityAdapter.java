@@ -1,21 +1,33 @@
 package fr.ville.bonduelle.partyup;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
 
 /**
  * Created by Thomas on 08/11/2016.
  * Récupère les activités depuis le serveur et les fournis à la GridView ou à la liste qui en a besoin
  */
 public class ActivityAdapter extends BaseAdapter {
-    private Context mContext;
-
+    private Context m_context;
+    private LayoutInflater m_inflater;
+    private int m_screenWidth;
     public ActivityAdapter(Context c) {
-        mContext = c;
+        m_context = c;
+        m_inflater = LayoutInflater.from(m_context);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((WindowManager)m_context.getSystemService(Context.WINDOW_SERVICE))
+            .getDefaultDisplay()
+                .getMetrics(metrics);
+        m_screenWidth = metrics.widthPixels;
     }
 
     public int getCount() {
@@ -32,19 +44,17 @@ public class ActivityAdapter extends BaseAdapter {
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+        View rootView = convertView;
+
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
-        } else {
-            imageView = (ImageView) convertView;
+            rootView = m_inflater.inflate(R.layout.event_list_item, parent, false);
         }
 
-        imageView.setImageResource(mThumbIds[position]);
-        return imageView;
+        ((ImageView) rootView.findViewById(R.id.eventThumbPicture))
+                .setImageResource(mThumbIds[position]);
+
+        return rootView;
     }
 
     // references to our images
