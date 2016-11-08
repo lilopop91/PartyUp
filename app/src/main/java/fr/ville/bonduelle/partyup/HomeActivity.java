@@ -115,7 +115,18 @@ public class HomeActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_home, container, false);
             // Met un petit texte pour bien montrer que le Fragment a récupéré son numéro de section
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            // Selon la section dans laquelle on est, on affiche un contenu différent
+            switch(getArguments().getInt(ARG_SECTION_NUMBER)){
+                case 0:
+                    textView.setText(getString(R.string.section_format,
+                            getString(R.string.past_events_tab)));
+                    break;
+                case 1:
+                    textView.setText(getString(R.string.section_format,
+                            getString(R.string.coming_events_tab)));
+                    break;
+            }
+
             return rootView;
         }
     }
@@ -134,7 +145,7 @@ public class HomeActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return EventListFragment.newInstance(position + 1);
+            return EventListFragment.newInstance(position);
         }
 
         @Override
@@ -147,11 +158,11 @@ public class HomeActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Passés";
+                    return getString(R.string.past_events_tab);
                 case 1:
-                    return "À venir";
+                    return getString(R.string.coming_events_tab);
                 case 2:
-                    return "En cours";
+                    return getString(R.string.current_events_tab);
             }
             return null;
         }

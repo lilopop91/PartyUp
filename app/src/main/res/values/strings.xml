@@ -24,5 +24,8 @@
     <string name="title_activity_signup">Inscription</string>
     <string name="title_activity_home">Accueil</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="section_format">Liste d\'événements %1$s</string>
+    <string name="coming_events_tab">à venir</string>
+    <string name="past_events_tab">passés</string>
+    <string name="current_events_tab">en cours</string>
 </resources>
