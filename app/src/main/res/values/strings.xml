@@ -28,4 +28,6 @@
     <string name="coming_events_tab">à venir</string>
     <string name="past_events_tab">passés</string>
     <string name="current_events_tab">en cours</string>
+    <string name="goto_event_button">Aller à l\'événement</string>
+
 </resources>

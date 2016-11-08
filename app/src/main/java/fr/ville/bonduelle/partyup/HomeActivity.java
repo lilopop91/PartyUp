@@ -132,6 +132,23 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
+     * Fragment qui affiche la présentation de l'événement en cours
+     */
+    public static class CurrentEventFragment extends Fragment {
+        public CurrentEventFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Récupère le layout de l'événement en cours
+            View rootView = inflater.inflate(R.layout.event_home_screen, container, false);
+
+            return rootView;
+        }
+    }
+
+    /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
@@ -145,7 +162,14 @@ public class HomeActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return EventListFragment.newInstance(position);
+            switch(position){
+                case 0:
+                case 1:
+                    return EventListFragment.newInstance(position);
+                default:
+                    return new CurrentEventFragment();
+            }
+
         }
 
         @Override

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_weight="70"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                app:srcCompat="@drawable/thumbnail_6"
+                android:id="@+id/eventPicture"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Nom de l'événement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventNameTextView"
+                android:textSize="25sp"
+                android:layout_weight="1"
+                android:layout_alignBottom="@+id/eventPicture"
+                android:textColor="@android:color/background_light" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="match_parent"
+        android:elevation="0dp">
+
+        <Button
+            android:text="@string/goto_event_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gotoEventButton" />
+
+        <TextView
+            android:text="Nombre de participants : 125"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/attendantsNumTextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:text="Début : 14 Novembre 2016 à 18h00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/beginDateTextView"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>
