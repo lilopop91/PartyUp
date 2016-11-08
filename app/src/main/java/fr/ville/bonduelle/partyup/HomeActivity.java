@@ -147,11 +147,11 @@ public class HomeActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Passés";
                 case 1:
-                    return "SECTION 2";
+                    return "À venir";
                 case 2:
-                    return "SECTION 3";
+                    return "En cours";
             }
             return null;
         }
